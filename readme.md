@@ -23,7 +23,7 @@ Music management system for listeners, songwriter, podcasters and labels using D
 1. Clone the repository
 
 ```bash
-git clone https://github.com/dfsr-chase/jokesv1.git)
+git clone https://github.com/dfsr-chase/jokesv1.git
 ```
 
 2. Make sure you have pipenv installed, if not, install it using the following command:
