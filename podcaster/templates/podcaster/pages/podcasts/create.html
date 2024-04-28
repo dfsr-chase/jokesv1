@@ -1,0 +1,60 @@
+{% extends 'podcaster/layouts/app.html' %}
+{% load static %}
+
+{% block content %}
+	<nav class="flex items-center justify-between mb-10">
+		<div class="flex items-center space-x-2 text-sm text-gray-500">
+			<a href="{% url 'podcaster:app:index' %}">Dashboard</a>
+			<span>/</span>
+			<a href="{% url 'podcaster:podcasts:index' %}">Podcasts</a>
+			<span>/</span>
+			<a href="{% url 'podcaster:podcasts:create' %}" class="text-green-500">Create</a>
+		</div>
+
+		<div class="flex items-center space-x-4 text-sm text-gray-500">
+			<a href="#">Username</a>
+			<div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center rounded-full">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+					<circle cx="12" cy="8" r="5" />
+					<path d="M20 21a8 8 0 0 0-16 0" />
+				</svg>
+			</div>
+		</div>
+	</nav>
+
+	<section id="form" class="mb-10">
+		<h2 class="font-semibold mb-4">Create Podcasts</h2>
+
+		<form action="#" method="post">
+			<div class="mb-4">
+				<label for="name" class="form-label">Title</label>
+				<input type="text" name="name" id="name" class="form-input focus:ring-green-500" />
+			</div>
+
+			<div class="mb-4">
+				<label for="file" class="form-label">Upload File</label>
+				<input type="file" name="file" id="file" class="form-input focus:ring-green-500 file:px-3 file:py-2 file:text-sm file:font-medium file:border-none file:bg-green-500 file:text-white file:rounded-md file:mr-4 file:cursor-pointer pointer-events-none file:pointer-events-auto" accept="audio/*" />
+			</div>
+
+			<div class="mb-4">
+				<label for="description" class="form-label">Description</label>
+				<textarea name="description" id="description" class="form-input focus:ring-green-500" rows="3"></textarea>
+			</div>
+
+			<div class="mb-4">
+				<label for="date" class="form-label">Publish Time</label>
+				<input type="datetime-local" name="date" id="date" class="form-input focus:ring-green-500" />
+			</div>
+
+			<div class="mb-6">
+				<label for="tags" class="form-label">Tags</label>
+				<input type="text" name="tags" id="tags" class="form-input focus:ring-green-500" placeholder="e.g. python, django, web" />
+			</div>
+
+			<div class="flex items-center space-x-4">
+				<button type="submit" class="button bg-green-500">Create Playlist</button>
+				<button type="reset" class="reset">Reset</button>
+			</div>
+		</form>
+	</section>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'layouts/app.html' %}
+{% load static %}
+
+{% block content %}
+	<nav class="flex items-center justify-between mb-10">
+		<div class="flex items-center space-x-2 text-sm text-gray-500">
+			<a href="{% url 'app:index' %}">Dashboard</a>
+			<span>/</span>
+			<a href="{% url 'playlists:index' %}" class="text-indigo-500">Playlists</a>
+		</div>
+
+		<div class="flex items-center space-x-4 text-sm text-gray-500">
+			<a href="#">Username</a>
+			<div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center rounded-full">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+					<circle cx="12" cy="8" r="5" />
+					<path d="M20 21a8 8 0 0 0-16 0" />
+				</svg>
+			</div>
+		</div>
+	</nav>
+
+	<section id="featured" class="mb-10">
+		<h2 class="font-semibold mb-4">Featured Playlist</h2>
+
+		<a href="{% url 'playlists:view' '1' %}">
+			<div class="w-full rounded-3xl overflow-hidden bg-red-500 text-white grid lg:grid-cols-2 gap-10 items-center">
+				<div class="flex flex-col space-y-4 p-10 order-1 lg:order-0">
+					<span class="font-medium text-sm uppercase">Playlists</span>
+					<h1 class="text-5xl font-bold">Best of Queen</h1>
+					<p class="text-sm line-clamp-3">Queen are a British rock band formed in London in 1970 by Freddie Mercury, Brian May, and Roger Taylor, later joined by John Deacon.</p>
+				</div>
+
+				<div class="relative h-full aspect-[4/3] order-0 lg:order-1">
+					<div id="overlay" class="absolute inset-0 w-full h-full bg-gradient-to-t lg:bg-gradient-to-r from-red-500 to-red-600/10"></div>
+					<img src="{% static 'images/queen.jpeg' %}" class="h-full w-full object-cover" />
+				</div>
+			</div>
+		</a>
+	</section>
+
+	<section id="playlist" class="mb-10">
+		<h2 class="font-semibold mb-6">Playlists Recommendations</h2>
+
+		<div class="grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
+			{% for i in '0123456789'|make_list %}
+				<a href="#">
+					<div class="flex flex-col justify-end bg-gray-100 rounded-xl overflow-hidden p-4 text-gray-500">
+						<div class="w-full h-full aspect-square mb-4 overflow-hidden rounded-lg bg-white flex items-center justify-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+								<path d="m20 7 1.7-1.7a1 1 0 0 0 0-1.4l-1.6-1.6a1 1 0 0 0-1.4 0L17 4v3Z" />
+								<path d="m17 7-5.1 5.1" />
+								<circle cx="11.5" cy="12.5" r=".5" fill="currentColor" />
+								<path d="M6 12a2 2 0 0 0 1.8-1.2l.4-.9C8.7 8.8 9.8 8 11 8c2.8 0 5 2.2 5 5 0 1.2-.8 2.3-1.9 2.8l-.9.4A2 2 0 0 0 12 18a4 4 0 0 1-4 4c-3.3 0-6-2.7-6-6a4 4 0 0 1 4-4" />
+								<path d="m6 16 2 2" />
+							</svg>
+						</div>
+						<h3 class="text-sm font-semibold">90's Rock</h3>
+						<p class="text-sm line-clamp-2">Nostalgic rock and roll from the 1990s.</p>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}

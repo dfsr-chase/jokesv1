@@ -1,0 +1,125 @@
+{% load static %}
+
+<div class="flex flex-col space-y-10">
+	<div class="px-4">
+		<a href="{% url 'app:index' %}">{% include 'partials/icon.html' %}</a>
+	</div>
+
+	<div class="w-full">
+		<h2 class="px-4 font-semibold mb-2">Search</h2>
+
+		<div class="relative">
+			<input type="search" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-indigo-500 text-sm" placeholder="Keyword" />
+
+			<a href="{% url 'app:search' %}">
+				<button class="absolute inset-y-0 right-0 flex items-center pr-2">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-indigo-500">
+						<circle cx="11" cy="11" r="8" />
+						<path d="m21 21-4.3-4.3" />
+					</svg>
+				</button>
+			</a>
+		</div>
+	</div>
+
+	<div class="w-full">
+		<h2 class="px-4 font-semibold mb-4">Browse Music</h2>
+		<div class="flex flex-col space-y-2">
+			<a href="{% url 'albums:index' %}">
+				<div class="px-4 py-2 rounded-lg block w-full text-gray-500 hover:bg-gray-200 flex space-x-2 items-center">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+						<circle cx="12" cy="12" r="10" />
+						<circle cx="12" cy="12" r="2" />
+					</svg>
+					<span class="text-sm">Albums</span>
+				</div>
+			</a>
+
+			<a href="{% url 'artists:index' %}">
+				<div class="px-4 py-2 rounded-lg block w-full text-gray-500 hover:bg-gray-200 flex space-x-2 items-center">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+						<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+						<circle cx="12" cy="7" r="4" />
+					</svg>
+					<span class="text-sm">Artists</span>
+				</div>
+			</a>
+
+			<a href="{% url 'playlists:index' %}">
+				<div class="px-4 py-2 rounded-lg block w-full text-gray-500 hover:bg-gray-200 flex space-x-2 items-center">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+						<path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3" />
+					</svg>
+					<span class="text-sm">Playlists</span>
+				</div>
+			</a>
+
+			<a href="{% url 'podcasts:index' %}">
+				<div class="px-4 py-2 rounded-lg block w-full text-gray-500 hover:bg-gray-200 flex space-x-2 items-center">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+						<path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12" />
+						<circle cx="17" cy="7" r="5" />
+					</svg>
+					<span class="text-sm">Podcasts</span>
+				</div>
+			</a>
+		</div>
+	</div>
+
+	<div class="w-full">
+		<div class="flex justify-between items-center">
+			<h2 class="px-4 font-semibold mb-4">Playlists</h2>
+			<a href="{% url 'playlists:create' %}">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-indigo-500">
+					<path d="M5 12h14" />
+					<path d="M12 5v14" />
+				</svg>
+			</a>
+		</div>
+
+		<div class="flex flex-col space-y-2">
+			<a href="{% url 'playlists:view' '1' %}">
+				<div class="px-4 py-2 rounded-lg block w-full text-gray-500 hover:bg-gray-200 flex space-x-2 items-center">
+					<span class="text-sm">Favorites</span>
+				</div>
+			</a>
+
+			<a href="{% url 'playlists:view' '2' %}">
+				<div class="px-4 py-2 rounded-lg block w-full text-gray-500 hover:bg-gray-200 flex space-x-2 items-center">
+					<span class="text-sm">My Playlists</span>
+				</div>
+			</a>
+
+			<a href="{% url 'playlists:view' '3' %}">
+				<div class="px-4 py-2 rounded-lg block w-full text-gray-500 hover:bg-gray-200 flex space-x-2 items-center">
+					<span class="text-sm">New Releases</span>
+				</div>
+			</a>
+
+			<a href="{% url 'playlists:view' '3' %}">
+				<div class="px-4 py-2 rounded-lg block w-full text-gray-500 hover:bg-gray-200 flex space-x-2 items-center">
+					<span class="text-sm">Downloads</span>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
+
+<div class="w-full justify-self-end bg-gray-100 p-4 rounded-lg">
+	<div class="w-full aspect-square mb-4 rounded-lg overflow-hidden">
+		<img src="{% static 'images/nirvana.jpg' %}" alt="nirvana" class="w-full h-full object-cover" />
+	</div>
+
+	<div class="flex items-center space-x-4">
+		<button class="w-10 h-10 rounded-full overflow-hidden bg-indigo-500 flex items-center justify-center text-white">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+				<polygon points="6 3 20 12 6 21 6 3" />
+			</svg>
+		</button>
+
+		<div class="flex flex-col text-sm">
+			<h5 class="font-semibold">Nirvana</h5>
+			<p class="text-gray-500">All Apologies</p>
+		</div>
+	</div>
+</div>

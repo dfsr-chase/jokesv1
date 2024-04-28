@@ -1,0 +1,100 @@
+{% extends 'layouts/app.html' %}
+{% load static %}
+
+{% block content %}
+	<nav class="flex items-center justify-between mb-10">
+		<div class="flex items-center space-x-2 text-sm text-gray-500">
+			<a href="{% url 'app:index' %}">Dashboard</a>
+			<span>/</span>
+			<a href="{% url 'podcasts:index' %}" class="text-indigo-500">Podcasts</a>
+		</div>
+
+		<div class="flex items-center space-x-4 text-sm text-gray-500">
+			<a href="#">Username</a>
+			<div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center rounded-full">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+					<circle cx="12" cy="8" r="5" />
+					<path d="M20 21a8 8 0 0 0-16 0" />
+				</svg>
+			</div>
+		</div>
+	</nav>
+
+	<section id="chart" class="mb-10">
+		<h2 class="font-semibold mb-4">Most Popular Podcasts</h2>
+
+		<div class="grid grid-cols-2 gap-6 items-center">
+			<a href="{% url 'podcasts:view' '1' %}" class="bg-gray-100 text-gray-500 rounded-lg p-4 flex items-start justify-between row-span-2 h-full space-x-6">
+				<div class="h-full aspect-square overflow-hidden rounded-lg bg-white flex-0 flex items-center justify-center relative">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+						<path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12" />
+						<circle cx="17" cy="7" r="5" />
+					</svg>
+				</div>
+
+				<div class="flex-1">
+					<h3 class="text-sm font-semibold">Syntax.fm</h3>
+					<p class="text-sm mb-6">Full Stack Web Developers Wes Bos and Scott Tolinski dive deep into web development, CSS, JavaScript, Frameworks, Typescript, Servers and more.</p>
+				</div>
+			</a>
+
+			<a href="{% url 'podcasts:view' '2' %}" class="bg-gray-100 text-gray-500 rounded-lg p-4 flex items-center justify-between space-x-6">
+				<div class="w-40 aspect-square overflow-hidden rounded-lg bg-white flex items-center justify-center relative">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+						<path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12" />
+						<circle cx="17" cy="7" r="5" />
+					</svg>
+				</div>
+				<div>
+					<h3 class="text-sm font-semibold">Syntax.fm</h3>
+					<p class="text-sm line-clamp-2">Full Stack Web Developers Wes Bos and Scott Tolinski dive deep into web development, CSS, JavaScript, Frameworks, Typescript, Servers and more.</p>
+				</div>
+			</a>
+
+			<a href="{% url 'podcasts:view' '2' %}" class="bg-gray-100 text-gray-500 rounded-lg p-4 flex items-center justify-between space-x-6">
+				<div class="w-40 aspect-square overflow-hidden rounded-lg bg-white flex items-center justify-center relative">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+						<path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12" />
+						<circle cx="17" cy="7" r="5" />
+					</svg>
+				</div>
+				<div>
+					<h3 class="text-sm font-semibold">Syntax.fm</h3>
+					<p class="text-sm line-clamp-2">Full Stack Web Developers Wes Bos and Scott Tolinski dive deep into web development, CSS, JavaScript, Frameworks, Typescript, Servers and more.</p>
+				</div>
+			</a>
+		</div>
+	</section>
+
+	<section id="Podcasts" class="mb-10">
+		<h2 class="font-semibold mb-6">Podcasts Recommendations</h2>
+
+		<div class="grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
+			{% for i in '0123456789'|make_list %}
+				<a href="{% url 'podcasts:view' '1' %}">
+					<div class="flex flex-col justify-end bg-gray-100 rounded-xl overflow-hidden p-4 text-gray-500">
+						<div class="w-full aspect-square mb-4 overflow-hidden rounded-lg bg-white flex items-center justify-center relative">
+							<div class="block-hover:hidden">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+									<path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12" />
+									<circle cx="17" cy="7" r="5" />
+								</svg>
+							</div>
+
+							<div class="hidden cursor-pointer-hover:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+								<button class="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-white">
+										<polygon points="6 3 20 12 6 21 6 3" />
+									</svg>
+								</button>
+							</div>
+						</div>
+
+						<h3 class="text-sm font-semibold">Syntax.fm</h3>
+						<p class="text-sm line-clamp-2">Full Stack Web Developers Wes Bos and Scott Tolinski dive deep into web development, CSS, JavaScript, Frameworks, Typescript, Servers and more.</p>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}

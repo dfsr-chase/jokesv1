@@ -1,0 +1,95 @@
+{% extends 'layouts/app.html' %}
+{% load static %}
+
+{% block content %}
+	<nav class="flex items-center justify-between mb-10">
+		<div class="flex items-center space-x-2 text-sm text-gray-500">
+			<a href="#">Dashboard</a>
+			<span>/</span>
+			<a href="{% url 'app:search' %}" class="text-indigo-500">Search</a>
+		</div>
+
+		<div class="flex items-center space-x-4 text-sm text-gray-500">
+			<a href="#">Username</a>
+			<div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center rounded-full">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+					<circle cx="12" cy="8" r="5" />
+					<path d="M20 21a8 8 0 0 0-16 0" />
+				</svg>
+			</div>
+		</div>
+	</nav>
+
+	<section id="search" class="mb-10">
+		<h2 class="font-semibold mb-4">Search Query</h2>
+
+		<div class="flex items-center space-x-4">
+			<input type="text" class="form-input" placeholder="Search for a song, artist, or album" />
+			<button class="button">Search</button>
+		</div>
+	</section>
+
+	<section id="songs" class="mb-10">
+		<h2 class="font-semibold mb-4">Song Results</h2>
+
+		<div class="w-full overflow-hidden border border-gray-200 rounded-xl">
+			<table class="w-full text-sm text-gray-500 border-collapse">
+				<thead>
+					<tr class="bg-gray-100 [&>th]:px-4 [&>th]:py-3 [&>th]:text-left [&>th]:font-semibold">
+						<th class="text-start w-20">Actions</th>
+						<th class="text-start w-auto">Artist</th>
+						<th class="text-start w-1/5">Duration</th>
+						<th class="text-start w-1/5">Album</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for i in '01234'|make_list %}
+						<tr class="bg-white [&>td]:px-4 [&>td]:py-3 border-t border-gray-200">
+							<td>
+								<div class="flex items-center space-x-2">
+									<button class="w-8 h-8 rounded-lg hover:bg-gray-200 flex items-center justify-center">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+											<circle cx="12" cy="12" r="1" />
+											<circle cx="19" cy="12" r="1" />
+											<circle cx="5" cy="12" r="1" />
+										</svg>
+									</button>
+								</div>
+							</td>
+							<td>
+								<h3 class="text-sm font-semibold">Smell like teen spirit</h3>
+								<p class="text-sm line-clamp-1">Nirvana most successful album, has sold more than 30 million copies worldwide, making it one of the best-selling albums ever.</p>
+							</td>
+							<td>3:45</td>
+							<td>Nevermind</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+	<section id="albums" class="mb-10">
+		<h2 class="font-semibold mb-6">Albums Results</h2>
+
+		<div class="grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
+			{% for i in '01234'|make_list %}
+				<a href="#">
+					<div class="flex flex-col justify-end bg-gray-100 rounded-xl overflow-hidden p-4 text-gray-500">
+						<div class="w-full h-full aspect-square mb-4 overflow-hidden rounded-lg bg-white flex items-center justify-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+								<circle cx="12" cy="12" r="10" />
+								<path d="M6 12c0-1.7.7-3.2 1.8-4.2" />
+								<circle cx="12" cy="12" r="2" />
+								<path d="M18 12c0 1.7-.7 3.2-1.8 4.2" />
+							</svg>
+						</div>
+
+						<h3 class="text-sm font-semibold">The Queen Is Dead</h3>
+						<p class="text-sm line-clamp-2">The third studio album by the English rock band the Smiths.</p>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}

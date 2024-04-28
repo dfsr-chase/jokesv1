@@ -1,0 +1,113 @@
+{% extends 'layouts/app.html' %}
+{% load static %}
+
+{% block content %}
+	<nav class="flex items-center justify-between mb-10">
+		<div class="flex items-center space-x-2 text-sm text-gray-500">
+			<a href="{% url 'app:index' %}">Dashboard</a>
+			<span>/</span>
+			<a href="{% url 'playlists:index' %}">Playlists</a>
+			<span>/</span>
+			<a href="{% url 'playlists:view' '1' %}" class="text-indigo-500">Best of Queen</a>
+		</div>
+
+		<div class="flex items-center space-x-4 text-sm text-gray-500">
+			<a href="#">Username</a>
+			<div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center rounded-full">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+					<circle cx="12" cy="8" r="5" />
+					<path d="M20 21a8 8 0 0 0-16 0" />
+				</svg>
+			</div>
+		</div>
+	</nav>
+
+	<section id="featured" class="mb-10">
+		<div class="w-full aspect-[3/1] relative overflow-hidden rounded-xl mb-10">
+			<img src="{% static 'images/queen.jpeg' %}" class="h-full w-full object-cover" />
+		</div>
+
+		<div class="flex flex-col space-y-2">
+			<span class="font-medium text-sm text-indigo-500 uppercase">Rock Album</span>
+			<h1 class="text-5xl font-bold">Best of Queen</h1>
+			<p class="text-sm text-gray-500">Queen are a British rock band formed in London in 1970 by Freddie Mercury, Brian May, and Roger Taylor, later joined by John Deacon.</p>
+		</div>
+	</section>
+
+	<section id="songs" class="mb-10">
+		<div class="flex items-center justify-between mb-4">
+			<h2 class="font-semibold">Songs List</h2>
+
+			<div class="flex items-center space-x-4">
+				<button class="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-white">
+						<polygon points="6 3 20 12 6 21 6 3" />
+					</svg>
+				</button>
+
+				<button class="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-white">
+						<path d="M11 12H3" />
+						<path d="M16 6H3" />
+						<path d="M16 18H3" />
+						<path d="M18 9v6" />
+						<path d="M21 12h-6" />
+					</svg>
+				</button>
+
+				<button class="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-white">
+						<path d="M20 7h-9" />
+						<path d="M14 17H5" />
+						<circle cx="17" cy="17" r="3" />
+						<circle cx="7" cy="7" r="3" />
+					</svg>
+				</button>
+
+				<button class="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-white">
+						<path d="M3 6h18" />
+						<path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+						<path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+					</svg>
+				</button>
+			</div>
+		</div>
+
+		<div class="w-full overflow-hidden border border-gray-200 rounded-xl">
+			<table class="w-full text-sm text-gray-500 border-collapse">
+				<thead>
+					<tr class="bg-gray-100 [&>th]:px-4 [&>th]:py-3 [&>th]:text-left [&>th]:font-semibold">
+						<th class="text-start w-20">Actions</th>
+						<th class="text-start w-auto">Title</th>
+						<th class="text-start w-1/5">Duration</th>
+						<th class="text-start w-1/5">Album</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for i in '0123456789'|make_list %}
+						<tr class="bg-white [&>td]:px-4 [&>td]:py-3 border-t border-gray-200">
+							<td>
+								<div class="flex items-center space-x-2">
+									<button class="w-8 h-8 rounded-lg hover:bg-gray-200 flex items-center justify-center">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+											<circle cx="12" cy="12" r="1" />
+											<circle cx="19" cy="12" r="1" />
+											<circle cx="5" cy="12" r="1" />
+										</svg>
+									</button>
+								</div>
+							</td>
+							<td>
+								<h3 class="text-sm font-semibold">Queen</h3>
+								<p class="text-sm line-clamp-2">Killer Queen (Remastered)</p>
+							</td>
+							<td>3:45</td>
+							<td>Best of Queen</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</section>
+{% endblock %}

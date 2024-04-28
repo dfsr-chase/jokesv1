@@ -1,0 +1,95 @@
+{% extends 'layouts/app.html' %}
+{% load static %}
+
+{% block content %}
+	<nav class="flex items-center justify-between mb-10">
+		<div class="flex items-center space-x-2 text-sm text-gray-500">
+			<a href="{% url 'app:index' %}">Dashboard</a>
+			<span>/</span>
+			<a href="{% url 'albums:index' %}">Albums</a>
+			<span>/</span>
+			<a href="{% url 'albums:view' '1' %}" class="text-indigo-500">The Smiths</a>
+		</div>
+
+		<div class="flex items-center space-x-4 text-sm text-gray-500">
+			<a href="#">Username</a>
+			<div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center rounded-full">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+					<circle cx="12" cy="8" r="5" />
+					<path d="M20 21a8 8 0 0 0-16 0" />
+				</svg>
+			</div>
+		</div>
+	</nav>
+
+	<section id="featured" class="mb-10">
+		<div class="w-full aspect-[3/1] relative overflow-hidden rounded-xl mb-10">
+			<img src="{% static 'images/the-smiths.jpg' %}" class="h-full w-full object-cover" />
+		</div>
+
+		<div class="flex flex-col space-y-2">
+			<span class="font-medium text-sm text-indigo-500 uppercase">The Smiths</span>
+			<h1 class="text-5xl font-bold">Louder Than Bombs</h1>
+			<p class="text-sm text-gray-500">Louder Than Bombs is a compilation album by English rock band the Smiths, released as a double album in March 1987 by their American record company, Sire Records</p>
+		</div>
+	</section>
+
+	<section id="songs" class="mb-10">
+		<div class="flex items-center justify-between mb-4">
+			<h2 class="font-semibold">Songs List</h2>
+
+			<div class="flex items-center space-x-4">
+				<button class="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-white">
+						<polygon points="6 3 20 12 6 21 6 3" />
+					</svg>
+				</button>
+				<button class="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-white">
+						<path d="M11 12H3" />
+						<path d="M16 6H3" />
+						<path d="M16 18H3" />
+						<path d="M18 9v6" />
+						<path d="M21 12h-6" />
+					</svg>
+				</button>
+			</div>
+		</div>
+
+		<div class="w-full overflow-hidden border border-gray-200 rounded-xl">
+			<table class="w-full text-sm text-gray-500 border-collapse">
+				<thead>
+					<tr class="bg-gray-100 [&>th]:px-4 [&>th]:py-3 [&>th]:text-left [&>th]:font-semibold">
+						<th class="text-start w-20">Actions</th>
+						<th class="text-start w-auto">Title</th>
+						<th class="text-start w-1/5">Duration</th>
+						<th class="text-start w-1/5">Album</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for i in '0123456789'|make_list %}
+						<tr class="bg-white [&>td]:px-4 [&>td]:py-3 border-t border-gray-200">
+							<td>
+								<div class="flex items-center space-x-2">
+									<button class="w-8 h-8 rounded-lg hover:bg-gray-200 flex items-center justify-center">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+											<circle cx="12" cy="12" r="1" />
+											<circle cx="19" cy="12" r="1" />
+											<circle cx="5" cy="12" r="1" />
+										</svg>
+									</button>
+								</div>
+							</td>
+							<td>
+								<h3 class="text-sm font-semibold">The Smiths</h3>
+								<p class="text-sm line-clamp-2">Heaven Knows I'm Miserable Now.</p>
+							</td>
+							<td>3:45</td>
+							<td>Louder Than Bombs</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</section>
+{% endblock %}

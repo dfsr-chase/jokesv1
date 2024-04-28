@@ -1,0 +1,81 @@
+{% extends 'layouts/app.html' %}
+{% load static %}
+
+{% block content %}
+	<nav class="flex items-center justify-between mb-10">
+		<div class="flex items-center space-x-2 text-sm text-gray-500">
+			<a href="{% url 'app:index' %}">Dashboard</a>
+			<span>/</span>
+			<a href="{% url 'app:membership' %}" class="text-indigo-500">Membership</a>
+		</div>
+
+		<div class="flex items-center space-x-4 text-sm text-gray-500">
+			<a href="#">Username</a>
+			<div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center rounded-full">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+					<circle cx="12" cy="8" r="5" />
+					<path d="M20 21a8 8 0 0 0-16 0" />
+				</svg>
+			</div>
+		</div>
+	</nav>
+
+	<section id="current" class="mb-10">
+		<h2 class="font-semibold mb-4">Membership</h2>
+
+		<div class="bg-gray-100 col-span-full rounded-xl p-10 flex flex-col">
+			<span class="font-medium text-sm text-indigo-500 uppercase mb-2">You're currently have</span>
+			<h3 class="font-bold text-3xl mb-2">Premium Membership</h3>
+			<p class="text-gray-500 text-sm mb-6">Premium Membership is the best plan for you. It includes all the features of the Basic Membership plan, plus more. you can upgrade to Exclusive Membership at any time or cancel your Premium Membership at any time.</p>
+
+			<div class="flex items-center space-x-4">
+				<button class="button">Upgrade</button>
+				<button class="button bg-gray-300 text-gray-500">Cancel</button>
+			</div>
+		</div>
+	</section>
+
+	<section id="plans" class="mb-10">
+		<h2 class="font-semibold mb-4">Plans</h2>
+
+		<div class="grid gap-6 lg:grid-cols-3">
+			<div class="bg-gray-100 rounded-xl p-10 flex flex-col">
+				<h3 class="font-bold mb-4">Basic Membership</h3>
+				<ul class="list-disc list-inside text-sm text-gray-500 space-y-2">
+					<li>Free with ads</li>
+					<li>Play free episodes</li>
+					<li>Listen to free songs</li>
+					<li>Unlimited playlists</li>
+					<li>3 Free public playlists</li>
+				</ul>
+			</div>
+
+			<div class="bg-indigo-500 rounded-xl p-10 flex flex-col">
+				<h3 class="font-bold mb-4 text-white">Premium Membership</h3>
+				<ul class="list-disc list-inside text-sm text-white space-y-2">
+					<li>No ads</li>
+					<li>Unlimited episodes</li>
+					<li>Exclusive playlists</li>
+					<li>Unlimited playlists</li>
+					<li>Unlimited podcasts</li>
+					<li>Offline listening</li>
+				</ul>
+			</div>
+
+			<div class="bg-gray-100 rounded-xl p-10 flex flex-col">
+				<h3 class="font-bold mb-4">Exclusive Membership</h3>
+				<ul class="list-disc list-inside text-sm text-gray-500 space-y-2">
+					<li>No ads</li>
+					<li>Unlimited episodes</li>
+					<li>Exclusive playlists</li>
+					<li>Unlimited playlists</li>
+					<li>Unlimited podcasts</li>
+					<li>Offline listening</li>
+					<li>Listen to exclusive songs</li>
+					<li>Listen to exclusive episodes</li>
+					<li>Support the podcaster</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'podcaster/layouts/app.html' %}
+{% load static %}
+
+{% block content %}
+	<nav class="flex items-center justify-between mb-10">
+		<div class="flex items-center space-x-2 text-sm text-gray-500">
+			<a href="{% url 'podcaster:app:index' %}">Dashboard</a>
+			<span>/</span>
+			<a href="{% url 'podcaster:podcasts:index' %}" class="text-green-500">Podcasts</a>
+		</div>
+
+		<div class="flex items-center space-x-4 text-sm text-gray-500">
+			<a href="#">Username</a>
+			<div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center rounded-full">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+					<circle cx="12" cy="8" r="5" />
+					<path d="M20 21a8 8 0 0 0-16 0" />
+				</svg>
+			</div>
+		</div>
+	</nav>
+
+	<section id="podcasts" class="mb-10">
+		<h2 class="font-semibold mb-4">My Podcasts</h2>
+
+		<div class="grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
+			{% for i in '0123'|make_list %}
+				<a href="{% url 'podcaster:podcasts:view' i %}">
+					<div class="flex flex-col justify-end bg-gray-100 rounded-xl overflow-hidden p-4 text-gray-500">
+						<div class="w-full aspect-square mb-4 overflow-hidden rounded-lg bg-white flex items-center justify-center relative">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+								<path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12" />
+								<circle cx="17" cy="7" r="5" />
+							</svg>
+						</div>
+
+						<h3 class="text-sm font-semibold">Django</h3>
+						<p class="text-sm line-clamp-2">Podcast about Django, a high-level Python web framework that encourages rapid development and clean, pragmatic design.</p>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+	</section>
+
+	<section id="episodes" class="mb-10">
+		<div class="flex items-center justify-between mb-4">
+			<h2 class="font-semibold">Episodes List</h2>
+
+			<div class="flex items-center space-x-4">
+				<button class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-white">
+						<polygon points="6 3 20 12 6 21 6 3" />
+					</svg>
+				</button>
+			</div>
+		</div>
+
+		<div class="w-full overflow-hidden border border-gray-200 rounded-xl">
+			<table class="w-full text-sm text-gray-500 border-collapse">
+				<thead>
+					<tr class="bg-gray-100 [&>th]:px-4 [&>th]:py-3 [&>th]:text-left [&>th]:font-semibold">
+						<th class="text-start w-20">Actions</th>
+						<th class="text-start w-auto">Title</th>
+						<th class="text-start w-1/5">Duration</th>
+						<th class="text-start w-1/5">Album</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for i in '0123456789'|make_list %}
+						<tr class="bg-white [&>td]:px-4 [&>td]:py-3 border-t border-gray-200">
+							<td>
+								<div class="flex items-center space-x-2">
+									<button class="w-8 h-8 rounded-lg hover:bg-gray-200 flex items-center justify-center">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+											<circle cx="12" cy="12" r="1" />
+											<circle cx="19" cy="12" r="1" />
+											<circle cx="5" cy="12" r="1" />
+										</svg>
+									</button>
+								</div>
+							</td>
+							<td>
+								<h3 class="text-sm font-semibold">What is django?</h3>
+								<p class="text-sm line-clamp-2">Introduction, overview of Django, and a brief history of the framework.</p>
+							</td>
+							<td>40:00</td>
+							<td>Django</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</section>
+{% endblock %}

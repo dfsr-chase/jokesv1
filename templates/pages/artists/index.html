@@ -1,0 +1,64 @@
+{% extends 'layouts/app.html' %}
+{% load static %}
+
+{% block content %}
+	<nav class="flex items-center justify-between mb-10">
+		<div class="flex items-center space-x-2 text-sm text-gray-500">
+			<a href="{% url 'app:index' %}">Dashboard</a>
+			<span>/</span>
+			<a href="{% url 'artists:index' %}" class="text-indigo-500">Artists</a>
+		</div>
+
+		<div class="flex items-center space-x-4 text-sm text-gray-500">
+			<a href="#">Username</a>
+			<div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center rounded-full">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+					<circle cx="12" cy="8" r="5" />
+					<path d="M20 21a8 8 0 0 0-16 0" />
+				</svg>
+			</div>
+		</div>
+	</nav>
+
+	<section id="featured" class="mb-10">
+		<h2 class="font-semibold mb-4">Featured Artists</h2>
+
+		<a href="{% url 'artists:view' '1' %}">
+			<div class="w-full rounded-3xl overflow-hidden bg-yellow-500 text-white grid lg:grid-cols-2 gap-10 items-center">
+				<div class="flex flex-col space-y-4 p-10 order-1 lg:order-0">
+					<span class="font-medium text-sm uppercase">Band Group</span>
+					<h1 class="text-5xl font-bold">Nirvana</h1>
+					<p class="text-sm line-clamp-3">Nirvana was an American rock band formed in Aberdeen, Washington, in 1987. Founded by lead singer and guitarist Kurt Cobain and bassist Krist Novoselic, the band went through a succession of drummers, most notably Chad Channing, before recruiting Dave Grohl in 1990.</p>
+				</div>
+
+				<div class="relative h-full aspect-[4/3] order-0 lg:order-1">
+					<div id="overlay" class="absolute inset-0 w-full h-full bg-gradient-to-t lg:bg-gradient-to-r from-yellow-500 to-yellow-600/10"></div>
+					<img src="{% static 'images/nirvana.jpg' %}" class="h-full w-full object-cover" />
+				</div>
+			</div>
+		</a>
+	</section>
+
+	<section id="artists" class="mb-10">
+		<h2 class="font-semibold mb-6">Artists Recommendations</h2>
+
+		<div class="grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
+			{% for i in '0123456789'|make_list %}
+				<a href="{% url 'artists:view' i %}">
+					<div class="flex flex-col justify-end bg-gray-100 rounded-xl overflow-hidden p-4 text-gray-500">
+						<div class="w-full h-full aspect-square mb-4 overflow-hidden rounded-lg bg-white flex items-center justify-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+								<path d="M18 21a8 8 0 0 0-16 0" />
+								<circle cx="10" cy="8" r="5" />
+								<path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3" />
+							</svg>
+						</div>
+
+						<h3 class="text-sm font-semibold">Nirvana</h3>
+						<p class="text-sm line-clamp-2">An American rock band formed in Aberdeen, Washington, in 1987.</p>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'layouts/app.html' %}
+{% load static %}
+
+{% block content %}
+	<nav class="flex items-center justify-between mb-10">
+		<div class="flex items-center space-x-2 text-sm text-gray-500">
+			<a href="{% url 'app:index' %}">Dashboard</a>
+			<span>/</span>
+			<a href="{% url 'playlists:index' %}">Playlists</a>
+			<span>/</span>
+			<a href="{% url 'playlists:create' %}" class="text-indigo-500">Create</a>
+		</div>
+
+		<div class="flex items-center space-x-4 text-sm text-gray-500">
+			<a href="#">Username</a>
+			<div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center rounded-full">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+					<circle cx="12" cy="8" r="5" />
+					<path d="M20 21a8 8 0 0 0-16 0" />
+				</svg>
+			</div>
+		</div>
+	</nav>
+
+	<section id="form" class="mb-10">
+		<h2 class="font-semibold mb-4">Create Playlist</h2>
+
+		<form action="#" method="post">
+			<div class="mb-4">
+				<label for="name" class="form-label">Name</label>
+				<input type="text" name="name" id="name" class="form-input" />
+			</div>
+
+			<div class="mb-4">
+				<label for="type" class="form-label">Playlist Type</label>
+				<select name="type" id="type" class="form-input">
+					<option value="private">Private</option>
+					<option value="public">Public</option>
+				</select>
+			</div>
+
+			<div class="mb-6">
+				<label for="description" class="form-label">Description</label>
+				<textarea name="description" id="description" class="form-input" rows="3"></textarea>
+			</div>
+
+			<div class="flex items-center space-x-4">
+				<button type="submit" class="button">Create Playlist</button>
+				<button type="reset" class="reset">Reset</button>
+			</div>
+		</form>
+	</section>
+{% endblock %}
